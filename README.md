@@ -50,7 +50,8 @@ The code below will install R_4.1.3 to the `/opt` directory.
 sudo ./installR.sh -a '4' -b '4.1.3'
 ```
 
-Assuming Rstudio server is installed on the system launch the server and `4.1.3` should be the version runninger in Rstudio.
+Assuming Rstudio server is installed on the system launch the server and `4.1.3` should be the version runninge in Rstudio.
+![](https://i.imgur.com/6xK96YP.png)
 
 #### Installing Rstudio server
 
