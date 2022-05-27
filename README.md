@@ -53,6 +53,21 @@ sudo ./installR.sh -a '4' -b '4.1.3'
 Assuming Rstudio server is installed on the system launch the server and `4.1.3` should be the version runninge in Rstudio.
 ![](https://i.imgur.com/6xK96YP.png)
 
+To install another version of R run the chunk below
+```bash
+sudo ./installR.sh -a '4' -b '4.1.2'
+```
+This will install a different version of R. In order to get Rstudio server to recogize the R version has been changed `rserver.conf` will be to be edited
+```bash
+sudo vim /etc/rstudio/rserver.conf
+```
+
+Next, add replace the current line (if there is one) with the path of the different R verision
+```bash
+rsession-which-r=/opt/R/4.1.2/bin/R
+```
+![](https://i.imgur.com/aoHfOxp.png)
+
 #### Installing Rstudio server
 
 ```bash
