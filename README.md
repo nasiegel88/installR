@@ -12,7 +12,7 @@ VI. [Closing remarks](#Closing-remarks) \
 VII. [Removing Rstudio server](#Removing-Rstudio-server)
 
 ### I. Resources
-#### Availible R versions (minor R version can be found in the links below)
+#### Availible R versions (minor R versions can be found in the links below)
  - [R-1](https://cran.r-project.org/src/base/R-1/)
  - [R-2](https://cran.r-project.org/src/base/R-2/)
  - [R-3](https://cran.r-project.org/src/base/R-3/)
@@ -26,11 +26,11 @@ Clone this repo from GitHub.
 git@github.com:nasiegel88/installR.git
 ```
 
-One the script is downloaded you will need to make it executible.
+Once the script is downloaded you will need to make it executable.
 ```bash=
 chmod u+x installR.sh
 ```
-Note script needs to be run as root and will not start without root
+Note the script needs to be run as root and will not start without root.
 ```bash=
 # Wrong
 $ ./installR.sh 
@@ -56,23 +56,49 @@ sudo ./installR.sh -a '4' -b '4.1.3'
 ```
 
 Assuming Rstudio server is installed on the system launch the server and `4.1.3` should be the version running in Rstudio.
+
+```bash=
+sudo rstudio-server start
+```
+
+And if the default port is being used users should go to `localhost:8787` using their browser of choice.
+
 ![](https://i.imgur.com/6xK96YP.png)
 
 To install another version of R run the chunk below.
 ```bash=
 sudo ./installR.sh -a 4 -b 4.1.2
 ```
-This will install a different version of R. In order to get Rstudio server to recogize the R version has been changed `rserver.conf` will need to be edited. The shell script below will make rstudio studio run what ever install version of R is passed through the `-b` arguement.
+This will install a different version of R. In order to get Rstudio server to recognize the R version has been changed `rserver.conf` will need to be edited. The shell script below will make rstudio studio run what ever installed version of R is passed through the `-b` argument.
 ```bash=
 chmod u+x changeR.sh
 sudo ./changeR.sh -b 4.1.2
+```
+Then the server will need to restarted to Rstudio to recognize the change.
+```bash=
+sudo rstudio-server restart
 ```
 
 ![](https://i.imgur.com/aoHfOxp.png)
 
 To double check that the desired version of R is being run in Rstudio enter the command listed below in the Rstudio console.
 ```r=
-R.version()
+R.version
+
+platform       x86_64-pc-linux-gnu         
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          4                           
+minor          1.2                         
+year           2021                        
+month          11                          
+day            01                          
+svn rev        81115                       
+language       R                           
+version.string R version 4.1.2 (2021-11-01) # The correct version is being used!
+nickname       Bird Hippie
 ```
 
 ### Installing Rstudio server
@@ -87,7 +113,7 @@ wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2022.02.2-
 ```
 
 ```bash
-# Run the executible
+# Run the executable
 sudo gdebi rstudio-server-2022.02.2-485-amd64.deb
 # clean up
 rm rstudio-server-2022.02.2-485-amd64.deb 
@@ -107,11 +133,11 @@ II. If the open source version of rstudio server is being used remove `rserver.c
 sudo rm /etc/rstudio/rserver.conf
 ```
 
-III. If a very old version of R is being installed, such as anything pre-3.0 users may have an issue launching Rstudio server. If that is the case it is recommended to in install an older version of Rstudio server. Debain builds for Debian and Ubuntu can be found [here](https://dailies.rstudio.com/rstudio/prairie-trillium/server/debian9/). If the goal is to run R from the command line then then skip this step.
+III. If a very old version of R is being installed, such as anything pre-3.0 users may have an issue launching Rstudio server. If that is the case it is recommended to in install an older version of Rstudio server. Debian builds for Debian and Ubuntu can be found [here](https://dailies.rstudio.com/rstudio/prairie-trillium/server/debian9/). If the goal is to run R from the command line then then skip this step.
 
 ### Closing remarks
 
-It is nice to be able to switch between R versions in Rstudio with a few clicks however, to ensure reproducibilty it is recommended to run R in something like [mybinder](https://the-turing-way.netlify.app/communication/binder/zero-to-binder.html) or [rocker](https://github.com/rocker-org/rocker) (docker images for R and Rstudio) and to manager software in an environment using a package manager such as [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+It is nice to be able to switch between R versions in Rstudio with a few clicks however, to ensure reproducibility it is recommended to run R in something like [mybinder](https://the-turing-way.netlify.app/communication/binder/zero-to-binder.html) or [rocker](https://github.com/rocker-org/rocker) (docker images for R and Rstudio) and to manager software in an environment using a package manager such as [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
 ### Removing Rstudio server
 
