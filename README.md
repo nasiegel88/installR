@@ -3,12 +3,12 @@
 The original documentation for installing multiple version of R on linux can be found [here](https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux).
 
 ### Table of contents
-I. [Resources](#Resources)
-II. [Installation](#Installation)
-III. [Example](#Example)
-IV. [Installing Rstudio server](#Installing-Rstudio-server)
-V. [Troubleshooting](#Troubleshooting)
-VI. [Closing remarks](#Closing-remarks)
+I. [Resources](#Resources) \
+II. [Installation](#Installation) \
+III. [Example](#Example) \
+IV. [Installing Rstudio server](#Installing-Rstudio-server) \
+V. [Troubleshooting](#Troubleshooting) \
+VI. [Closing remarks](#Closing-remarks) \
 VII. [Removing Rstudio server](#Removing-Rstudio-server)
 
 ### I. Resources
