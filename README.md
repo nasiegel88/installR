@@ -11,29 +11,25 @@ The original documentation for installing multiple version of R on linux can be 
 
 ### Installation
 
-This repo can either be cloned or the installation script can be download directly from GitHub.
+Clone this repo from GitHub.
 
-Cloning repo
-```bash
-```
-
-Downloading script via command line
-```bash
+```bash=
+git@github.com:nasiegel88/installR.git
 ```
 
 One the script is downloaded you will need to make it executible.
-```bash
+```bash=
 chmod u+x installR.sh
 ```
 Note script needs to be run as root and will not start without root
-```bash
+```bash=
 # Wrong
 $ ./installR.sh 
 This script must be run as root.
 ```
 
 `-a` is the major R version and `-b` is the minor R version
-```bash
+```bash=
 # Correct
 $ sudo ./installR.sh 
 Some or all of the parameters are empty
@@ -46,27 +42,29 @@ Usage: ./installR.sh -a parameterA -b parameterB
 #### Example
 
 The code below will install R_4.1.3 to the `/opt` directory.
-```bash
+```bash=
 sudo ./installR.sh -a '4' -b '4.1.3'
 ```
 
-Assuming Rstudio server is installed on the system launch the server and `4.1.3` should be the version runninge in Rstudio.
+Assuming Rstudio server is installed on the system launch the server and `4.1.3` should be the version running in Rstudio.
 ![](https://i.imgur.com/6xK96YP.png)
 
-To install another version of R run the chunk below
-```bash
-sudo ./installR.sh -a '4' -b '4.1.2'
+To install another version of R run the chunk below.
+```bash=
+sudo ./installR.sh -a 4 -b 4.1.2
 ```
-This will install a different version of R. In order to get Rstudio server to recogize the R version has been changed `rserver.conf` will be to be edited
-```bash
-sudo vim /etc/rstudio/rserver.conf
+This will install a different version of R. In order to get Rstudio server to recogize the R version has been changed `rserver.conf` will need to be edited. The shell script below will make rstudio studio run what ever install version of R is passed through the `-b` arguement.
+```bash=
+chmod u+x changeR.sh
+sudo ./changeR.sh -b 4.1.2
 ```
 
-Next, add replace the current line (if there is one) with the path of the different R verision
-```bash
-rsession-which-r=/opt/R/4.1.2/bin/R
-```
 ![](https://i.imgur.com/aoHfOxp.png)
+
+To double check that the desired version of R is being run in Rstudio enter the command listed below in the Rstudio console.
+```r=
+R.version()
+```
 
 #### Installing Rstudio server
 
@@ -81,7 +79,7 @@ wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2022.02.2-
 
 ```bash
 # Run the executible
-sudo gdebi rstudio-server-2022.02.2-485-amd64.deb -y
+sudo gdebi rstudio-server-2022.02.2-485-amd64.deb
 # clean up
 rm rstudio-server-2022.02.2-485-amd64.deb 
 ```
