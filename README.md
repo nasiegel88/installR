@@ -12,7 +12,7 @@ VI. [Closing remarks](#Closing-remarks) \
 VII. [Removing Rstudio server](#Removing-Rstudio-server)
 
 ### I. Resources
-#### Availible R versions (minor R versions can be found in the links below)
+#### Availible R versions (minor R versions can be found in the links below).
  - [R-1](https://cran.r-project.org/src/base/R-1/)
  - [R-2](https://cran.r-project.org/src/base/R-2/)
  - [R-3](https://cran.r-project.org/src/base/R-3/)
