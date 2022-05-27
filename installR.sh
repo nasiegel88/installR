@@ -27,9 +27,13 @@ then
    helpFunction
 fi
 
-# Begin script in case all parameters are correct
-echo "$parameterA"
-echo "$parameterB"
+# Print R version to be installed
+echo "R version $parameterB will be installed in the /opt directory"
+
+# Make /opt if it does not already exist
+mkdir -p /opt
+
+sleep 2
 
 # Install r-base if it is not already installed
 REQUIRED_PKG="r-base"
@@ -39,6 +43,8 @@ if [ "" = "$PKG_OK" ]; then
   echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
   sudo apt-get build-dep $REQUIRED_PKG
 fi
+
+sleep 2
 
 export R_VERSION=$parameterB
 
@@ -60,7 +66,18 @@ sudo make install
 
 
 # Verify R installation
+echo "Checking if $parameterB was installed successfully"
+
+sleep 2
+
 /opt/R/$parameterB/bin/R --version
+
+if [ $? -eq 0 ]
+then
+    echo "R version $parameterB was installed successfully"
+else
+    echo -e "An error occured\n$parameterB was not installed"
+fi
 
 # Create a symlink to R if they do not already exist
 sudo ln -sfn /opt/R/$parameterB/bin/R /usr/local/bin/R
@@ -70,6 +87,6 @@ sudo ln -sfn /opt/R/$parameterB/bin/Rscript /usr/local/bin/Rscript
 export RSTUDIO_WHICH_R=$(which /opt/R/$parameterB/bin/R)
 
 # Clean up
-
-rm $parameterB.tar.gz
-rm -rf $parameterB
+cd /opt && \
+rm R-$parameterB.tar.gz && \
+rm -rf R-$parameterB
