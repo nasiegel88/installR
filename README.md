@@ -2,7 +2,16 @@
 
 The original documentation for installing multiple version of R on linux can be found [here](https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux).
 
-### Resources
+### Table of contents
+I. [Resources](#Resources)
+II. [Installation](#Installation)
+III. [Example](#Example)
+IV. [Installing Rstudio server](#Installing-Rstudio-server)
+V. [Troubleshooting](#Troubleshooting)
+VI. [Closing remarks](#Closing-remarks)
+VII. [Removing Rstudio server](#Removing-Rstudio-server)
+
+### I. Resources
 #### Availible R versions (minor R version can be found in the links below)
  - [R-1](https://cran.r-project.org/src/base/R-1/)
  - [R-2](https://cran.r-project.org/src/base/R-2/)
@@ -39,7 +48,7 @@ Usage: ./installR.sh -a parameterA -b parameterB
 	-b Minor R version i.e. 4.1.3
 ```
 
-#### Example
+### Example
 
 The code below will install R_4.1.3 to the `/opt` directory.
 ```bash=
@@ -66,7 +75,7 @@ To double check that the desired version of R is being run in Rstudio enter the 
 R.version()
 ```
 
-#### Installing Rstudio server
+### Installing Rstudio server
 
 ```bash
 sudo apt-get install gdebi-core
@@ -84,7 +93,7 @@ sudo gdebi rstudio-server-2022.02.2-485-amd64.deb
 rm rstudio-server-2022.02.2-485-amd64.deb 
 ```
 
-#### Trouble shooting
+### Troubleshooting
 
 Rstudio server should now be ready to run. If there are issues starting the server try some of the solutions listed below... 
 
@@ -93,12 +102,18 @@ I. Try telling rstudio server where to located the R
 echo "export RSTUDIO_WHICH_R='/opt/R/4.1.3/bin/R'" >> ~/.profile 
 ```
 
-II. If the open source version of rstudio server is being used remove `rserver.conf` and restart the server
+II. If the open source version of rstudio server is being used remove `rserver.conf` and restart the server.
 ```bash
 sudo rm /etc/rstudio/rserver.conf
 ```
 
-#### Removing Rstudio server
+III. If a very old version of R is being installed, such as anything pre-3.0 users may have an issue launching Rstudio server. If that is the case it is recommended to in install an older version of Rstudio server. Debain builds for Debian and Ubuntu can be found [here](https://dailies.rstudio.com/rstudio/prairie-trillium/server/debian9/). If the goal is to run R from the command line then then skip this step.
+
+### Closing remarks
+
+It is nice to be able to switch between R versions in Rstudio with a few clicks however, to ensure reproducibilty it is recommended to run R in something like [mybinder](https://the-turing-way.netlify.app/communication/binder/zero-to-binder.html) or [rocker](https://github.com/rocker-org/rocker) (docker images for R and Rstudio) and to manager software in an environment using a package manager such as [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+
+### Removing Rstudio server
 
 ```bash
 sudo apt-get remove --purge rstudio-server
