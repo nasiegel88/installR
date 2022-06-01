@@ -101,6 +101,8 @@ version.string R version 4.1.2 (2021-11-01) # The correct version is being used!
 nickname       Bird Hippie
 ```
 
+If Rstudio server is not running the desired version of R after restarting the server try to terminate the session and start a new one.
+
 ### Installing Rstudio server
 
 ```bash
