@@ -1,4 +1,4 @@
-# This is a script to install multiple versions of R on linux systemes that are not using R studio server pro
+# This is a script to install multiple versions of R on linux systems that are not using R studio server pro
 
 The original documentation for installing multiple version of R on linux can be found [here](https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux).
 
