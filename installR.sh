@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop on fail!
+set -e
+
 [[ $EUID -ne 0 ]] && echo "This script must be run as root." && exit 1
 
 helpFunction()
